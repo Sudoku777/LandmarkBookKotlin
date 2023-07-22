@@ -1,5 +1,6 @@
 package com.yusif.landmarkbookkotlin
 
-class Landmark(val name: String, val country: String, val image: Int) : java.io.Serializable {
+//add DATA in class
+data class Landmark(val name: String, val country: String, val image: Int) : java.io.Serializable {
 
 }

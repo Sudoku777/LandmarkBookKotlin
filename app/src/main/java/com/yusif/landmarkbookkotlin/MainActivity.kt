@@ -1,13 +1,13 @@
 package com.yusif.landmarkbookkotlin
 
-
-import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.yusif.landmarkbookkotlin.databinding.ActivityMainBinding
 
+val chosenLandmark:Landmark?=null
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,14 +23,12 @@ class MainActivity : AppCompatActivity() {
 
         landmarkList = ArrayList<Landmark>()
 
-
-        // 1. val pisaImage = R.drawable.pisa (Its not good.For image we create new class Landmark)
-
-        // 2. Data
         val pisa = Landmark("Pisa", "Italy", R.drawable.pisa)
         val colosseum = Landmark("Colosseum", "Italy", R.drawable.colosseum)
         val eiffel = Landmark("Eiffel", "France", R.drawable.eiffel)
         val londonBridge = Landmark("London Bridge", "England", R.drawable.london_bridge)
+
+//        val bitmap = BitmapFactory.decodeResource(resources,R.drawable.pisa)
 
         landmarkList.add(pisa)
         landmarkList.add(colosseum)
@@ -38,6 +36,14 @@ class MainActivity : AppCompatActivity() {
         landmarkList.add(londonBridge)
 
 
+        //RecyclerView
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        val landmarkAdaptor =LandmarkAdaptor(landmarkList)
+        binding.recyclerView.adapter = landmarkAdaptor
+
+
+
+/*
 
         // 3. Show image for users - Adaptor: layout & data
         //Mapping
@@ -53,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
+*/
 
     }
 }
